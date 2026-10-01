@@ -103,6 +103,7 @@ array set build_options {
     -synth_ip    1
     -impl        0
     -post_impl   0
+    -impl_strategy {Vivado Implementation Defaults}
     -user_plugin ""
     -bitstream_userid  "0xDEADC0DE"
     -bitstream_usr_access "0x66669999"
@@ -445,7 +446,7 @@ if {$sim} {
 # Implement design
 if {$impl} {
     update_compile_order -fileset sources_1
-    _do_impl $jobs {"Vivado Implementation Defaults"}
+    _do_impl $jobs [list $impl_strategy]
 }
 
 if {$post_impl} {
